@@ -1,4 +1,8 @@
-import requests,random,time
+import requests,random,time,threading,os
+
+AUTHOR = """
+THIS WAS DEVELOPED BY VIBEX#0001 A LONG TIME AGO
+"""
 
 class Captcha:
 
@@ -267,4 +271,15 @@ class Check:
 
         response = requests.post('https://discord.com/api/v9/invites/WccuGMhNhf', headers=headers, cookies=cookies, json=json_data)
         print(response.text)
-Discord.signup()
+
+threads = input("Enter Amount Of Threads > ")
+os.system("cls")
+print("Generating Started...")
+
+def thread():
+    while True:
+        Discord.signup()
+
+for i in range(int(threads)):
+    threading.Thread(target=thread).start()
+
